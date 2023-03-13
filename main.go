@@ -75,7 +75,7 @@ func main() {
 	myScanner := bufio.NewScanner(myFile)
 
 	for myScanner.Scan() {
-		gimmejslink(myScanner.Text())
+		go gimmejslink(myScanner.Text())
 		time.Sleep(100 * time.Millisecond)
 	}
 	time.Sleep(5 * time.Second)
