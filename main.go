@@ -21,7 +21,7 @@ func logo() {
 	fmt.Println("              | $$$$$$$$| $$  | $$|  $$$$$$$| $$$$$$$$ /$$/\\  $$  |  $$$$/")
 	fmt.Println("              |________/|__/  |__/ \\_______/|________/|__/  \\__/   \\___/  	")
 	fmt.Println("")
-	fmt.Println("                       JsValidator Tool By @SirBugs .go Version")
+	fmt.Println("                       EndpointExt Tool By @SirBugs .go Version")
 	fmt.Println("                             V: 1.0.1 Made With All Love")
 	fmt.Println("                  For Extracting all possilbe endpoints from Js files ")
 	fmt.Println("                         Twitter@SirBagoza -- GitHub@SirBugs")
