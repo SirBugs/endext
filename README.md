@@ -31,7 +31,7 @@ or download from https://go.dev/dl/
               |________/|__/  |__/ \_______/|________/|__/  \__/   \___/
 
                        EndPointExt Tool By @SirBugs .go Version
-                             V: 1.0.1 Made With All Love
+                             V: 1.0.2 Made With All Love
                   For Extracting all possilbe endpoints from Js files
                          Twitter@SirBagoza -- GitHub@SirBugs
                            Run : go run main.go jsurls.txt
