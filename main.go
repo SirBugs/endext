@@ -22,7 +22,7 @@ func logo() {
 	fmt.Println("              |________/|__/  |__/ \\_______/|________/|__/  \\__/   \\___/  	")
 	fmt.Println("")
 	fmt.Println("                       EndpointExt Tool By @SirBugs .go Version")
-	fmt.Println("                             V: 1.0.1 Made With All Love")
+	fmt.Println("                             V: 1.0.2 Made With All Love")
 	fmt.Println("                  For Extracting all possilbe endpoints from Js files ")
 	fmt.Println("                         Twitter@SirBagoza -- GitHub@SirBugs")
 	fmt.Printf("                           Run : go run main.go jsurls.txt\n\n")
@@ -53,7 +53,11 @@ func gimmejslink(jsurl string) {
 				// fmt.Println(i)
 				CurrentEndPoint := strings.Split(response, "\"/")[i]
 				CurrentEndPointt := strings.Split(CurrentEndPoint, "\"")[0]
-				fmt.Println(CurrentEndPointt)
+				if strings.Contains(CurrentEndPointt, "{") || strings.Contains(CurrentEndPointt, "}") || strings.Contains(CurrentEndPointt, ",") || strings.Contains(CurrentEndPointt, "<") || strings.Contains(CurrentEndPointt, ">") || strings.Contains(CurrentEndPointt, "\n") || strings.Contains(CurrentEndPointt, "$") || CurrentEndPointt == "/" || CurrentEndPointt == "./" || CurrentEndPointt == "\n" || CurrentEndPointt == "\n\n" || CurrentEndPointt == " " || CurrentEndPointt == "" {
+					fmt.Printf("")
+				} else {
+					fmt.Println(CurrentEndPointt)
+				}
 			}
 		} else {
 			fmt.Println("[ - ] Bad JS File Detected")
