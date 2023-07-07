@@ -64,18 +64,28 @@ or download from https://go.dev/dl/
 ```
 
 # One Line Command:
-
 ```
 ▶ echo 'target.com' | waybackurls | tee waybackresults.txt; cat waybackresults.txt | grep "\.js" > js_files.txt; go run main.go -l js_files.txt
 ```
 
 // You can use Gau, HaKrawler, Katana, etc...
 
+# Options:
+```
+  -l string
+    	this list would have more thana .js file URL to grep the endpoints from
+  -o string
+    	output file (default "js_endpoints.txt")
+  -p	public mode for showing the URLs of each endpoints & Showing the function (endpoints/fetch)
+  -u string
+    	single URL to grep endpoints from
+```
+
 # Updates:
-- Published (1.0.2)
-- removing duplicates (1.0.3)
-- RegexGrep with this.fetch(this.url("X") && short the urls filtering functionality (1.0.4)
-- flag for single url -u or urls list -l && flag for public the urls -p && flag for output -o (1.0.5)
+- (1.0.2) :: Published 
+- (1.0.3) :: removing duplicates
+- (1.0.4) :: RegexGrep with this.fetch(this.url("X") && short the urls filtering functionality
+- (1.0.5) :: flag for single url -u or urls list -l && flag for public the urls -p && flag for output -o
 
 
 # Credits:
