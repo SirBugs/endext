@@ -18,50 +18,68 @@ or download from https://go.dev/dl/
 
 # Usage:
 ```
-▶ go run main.go urls.txt
+▶ go run main.go -l js_files_urls.txt
 
 
-               /$$$$$$$$                 /$$ /$$$$$$$$             /$$
-              | $$_____/                | $$| $$_____/            | $$
-              | $$       /$$$$$$$   /$$$$$$$| $$       /$$   /$$ /$$$$$$
-              | $$$$$   | $$__  $$ /$$__  $$| $$$$$   |  $$ /$$/|_  $$_/
-              | $$__/   | $$  \ $$| $$  | $$| $$__/    \  $$$$/   | $$
-              | $$      | $$  | $$| $$  | $$| $$        >$$  $$   | $$ /$$
-              | $$$$$$$$| $$  | $$|  $$$$$$$| $$$$$$$$ /$$/\  $$  |  $$$$/
-              |________/|__/  |__/ \_______/|________/|__/  \__/   \___/
+                  ______          ________     __ 	
+                 / ____/___  ____/ / ____/  __/ /_	
+                / __/ / __ \/ __  / __/ | |/_/ __/	
+               / /___/ / / / /_/ / /____>  </ /_  	
+              /_____/_/ /_/\__,_/_____/_/|_|\__/  	
 
-                       EndPointExt Tool By @SirBugs .go Version
-                             V: 1.0.2 Made With All Love
-                  For Extracting all possilbe endpoints from Js files
-                         Twitter@SirBagoza -- GitHub@SirBugs
-                           Run : go run main.go jsurls.txt
+            ( * ) EndpointsExtractor Tool By @SirBugs .go Version
+            ( * ) For Extracting all possilbe endpoints from Js files 
+            ( * ) Version: 1.0.5 (Updated 3.Vrs on 7/7/2023)
+            ( * ) Contact: Twitter@SirBagoza, GitHub@SirBugs, Medium@bag0zathev2
+            ( * ) Command: go run main.go -l jsurls.txt
 
-endpoints/users/password
-sign-in
-endpoints/sign-out
-endpoints/billing/update-billing-info
-endpoints/billing/get-account
-endpoints/billing/create-account
-endpoints/billing/list-subscriptions
-endpoints/billing/create-new-subscription-purchase
-endpoints/billing/create-one-time-payment
-endpoints/billing/get-account
-endpoints/billing/create-account
-endpoints/billing/list-subscriptions
-endpoints/billing/create-new-subscription-purchase
-endpoints/billing/create-one-time-payment
+            ( ! ) You can use only -u for single URL or -l for .JS file URLs, Not both
+            ( ! ) This tool has been received the last 3 updates at once
+
+ ( 1 ) - https://example.com/_home/chunks/preload-helper-xxxxxxxx.js :: (endpoint) _app/
+ ( 2 ) - https://example.com/_home/chunks/organization-xxxxxxxx.js :: (endpoint) endpoints/dashboard-metadata/bulk
+ ( 3 ) - https://example.com/_home/chunks/organization-xxxxxxxx.js :: (endpoint) endpoints/applications
+ ( 4 ) - https://example.com/_home/chunks/organization-xxxxxxxx.js :: (endpoint) endpoints/accounts
+ ( 5 ) - https://example.com/_home/chunks/organization-xxxxxxxx.js :: (endpoint) sign-in
+ ( 6 ) - https://example.com/_home/chunks/organization-xxxxxxxx.js :: (endpoint) endpoints/sign-out
+ ( 7 ) - https://example.com/_home/chunks/organization-xxxxxxxx.js :: (endpoint) endpoints/organization/details
+ ( 8 ) - https://example.com/_home/chunks/organization-xxxxxxxx.js :: (endpoint) endpoints/organization/update
+ ( 9 ) - https://example.com/_home/chunks/organization-xxxxxxxx.js :: (endpoint) endpoints/organization/subscribe
+ ( 10 ) - https://example.com/_home/chunks/esr-apps-xxxxxxxx.js :: (endpoint) endpoints/express-security-review/application
+ ( 11 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) applications
+ ( 12 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) applications/new
+ ( 13 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) settings
+ ( 14 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) integrations
+ ( 15 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) grants
+ ( 16 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) applications/
+ ( 17 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) accounts
+ ( 18 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) webhooks
+ ( 19 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) quickstart-guides
+ ( 20 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) connectivity-api-offering
+ ( 21 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) plans
+ ( 22 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) users
+ ( 23 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) billing
+ ( 24 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) experiments/
 
 ```
 
 # One Line Command:
 
 ```
-▶ echo 'target.com' | waybackurls | tee waybackresults.txt; cat waybackresults.txt | grep "\.js" > js_files.txt; go run main.go js_files.txt
+▶ echo 'target.com' | waybackurls | tee waybackresults.txt; cat waybackresults.txt | grep "\.js" > js_files.txt; go run main.go -l js_files.txt
 ```
 
 // You can use Gau, HaKrawler, Katana, etc...
 
-# Credits
+# Updates:
+- Published (1.0.2)
+- removing duplicates (1.0.3)
+- RegexGrep with this.fetch(this.url("X") && short the urls filtering functionality (1.0.4)
+- flag for single url -u or urls list -l && flag for public the urls -p && flag for output -o (1.0.5)
+
+
+# Credits:
+
 This tool was written in Golang 1.19.4, Made with all love in Egypt! <3
 
 Twitter@SirBagoza , Github@SirBugs
