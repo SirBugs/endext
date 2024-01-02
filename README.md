@@ -73,7 +73,7 @@ or download from https://go.dev/dl/
 # Options:
 ```
   -l string
-    	this list would have more thana .js file URL to grep the endpoints from
+    	this list would have more than a .js file URL to grep the endpoints from
   -o string
     	output file (default "js_endpoints.txt")
   -p	public mode for showing the URLs of each endpoints & Showing the function (endpoints/fetch)
