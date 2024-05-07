@@ -5,7 +5,6 @@ import (
 	"flag"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"os"
 	"regexp"
@@ -13,197 +12,156 @@ import (
 	"time"
 )
 
-func logo() {
-	fmt.Printf("\n                  ______          ________     __ 	\n")
-	fmt.Println("                 / ____/___  ____/ / ____/  __/ /_	")
-	fmt.Println("                / __/ / __ \\/ __  / __/ | |/_/ __/	")
-	fmt.Println("               / /___/ / / / /_/ / /____>  </ /_  	")
-	fmt.Println("              /_____/_/ /_/\\__,_/_____/_/|_|\\__/  	")
-	fmt.Println("")
-	fmt.Println("            ( * ) EndpointsExtractor Tool By @SirBugs .go Version")
-	fmt.Println("            ( * ) For Extracting all possilbe endpoints from Js files ")
-	fmt.Println("            ( * ) Version: 1.0.5 (Updated 3.Vrs on 7/7/2023)")
-	fmt.Println("            ( * ) Contact: Twitter@SirBagoza, GitHub@SirBugs, Medium@bag0zathev2")
-	fmt.Printf("            ( * ) Command: go run main.go -l jsurls.txt\n\n")
-	fmt.Println("            ( ! ) You can use only -u for single URL or -l for .JS file URLs, Not both")
-	fmt.Printf("            ( ! ) This tool has been received the last 3 updates at once\n\n")
-}
+var numericExtedEPs = 1 // Counter var for extracted endpoints
 
-var EndPoints []string
-var EPCount int
-
-func IsinArray(element string, arr []string) bool {
-	for _, value := range arr {
-		if value == element {
-			return true
-		}
-	}
-	return false
-}
-
-func IsValid(stringo string) bool {
-	if strings.Contains(stringo, "$") || strings.Contains(stringo, "#") || strings.Contains(stringo, "|") || strings.Contains(stringo, "\\") || strings.Contains(stringo, "?") || strings.Contains(stringo, "(") || strings.Contains(stringo, ")") || strings.Contains(stringo, "[") || strings.Contains(stringo, "]") || strings.Contains(stringo, "{") || strings.Contains(stringo, "}") || strings.Contains(stringo, ",") || strings.Contains(stringo, "<") || strings.Contains(stringo, ":") || strings.Contains(stringo, "*") || strings.Contains(stringo, ">") || strings.Contains(stringo, "\n") || strings.Contains(stringo, "$") || stringo == "/" || stringo == "./" || stringo == "\n" || stringo == "\n\n" || stringo == " " || stringo == "" || strings.Contains(stringo, ".svg") || strings.Contains(stringo, ".png") || strings.Contains(stringo, ".jpg") || strings.Contains(stringo, ".ico") || len(stringo) == 1 || stringo == "//" {
-		return false
-	} else {
-		return true
-	}
-}
-
-func gimmejslink(jsurl string, output string, activationFlag bool) {
-
-	// #   Saving into the output file
-	// # ###############################
-	myOutPut, err := os.OpenFile(output, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		panic(err)
-	}
-	defer myOutPut.Close()
-
-	// # #####################################################################
-
-	client := http.Client{
+// getFileContent fetches the JS file content if it is accessible with a status code of 200.
+func getFileContent(url string) ([]byte, bool) {
+	client := &http.Client{
 		Timeout: 7 * time.Second,
 	}
-	req, err := http.NewRequest("GET", jsurl, nil)
-	req.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/109.0") // Setting To Real User-Agent
+	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
-		log.Fatal(err)
+		return nil, false
 	}
+	req.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:125.0) Gecko/20100101 Firefox/125.0")
+
 	resp, err := client.Do(req)
-	if resp == nil {
-		fmt.Println("[ - ] Bad URL")
-	} else {
-		body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, false
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != 200 {
+		return nil, false
+	}
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, false
+	}
+	return body, true
+}
+
+// readRegexPatterns reads regex patterns from a file and returns them.
+func readRegexPatterns(filename string) ([]*regexp.Regexp, error) {
+	file, err := os.Open(filename)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	var patterns []*regexp.Regexp
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		pattern, err := regexp.Compile(scanner.Text())
 		if err != nil {
-			log.Fatal(err)
+			return nil, err
 		}
-		response := string(body)
-		if resp.StatusCode == 200 {
-			// #########################################################################
-			// Method 1 : Grepping all the values between " and "
-			PossibleEndPoints := strings.Count(response, "\"/")
-			for i := 1; i < PossibleEndPoints+1; i++ {
-				// fmt.Println(i)
-				CurrentEndPoint := strings.Split(response, "\"/")[i]
-				CurrentEndPointt := strings.Split(CurrentEndPoint, "\"")[0]
-				if IsValid(CurrentEndPointt) == false {
-					fmt.Printf("")
-				} else {
-					if IsinArray(CurrentEndPointt, EndPoints) == true {
-					} else {
-						EPCount += 1
-						EndPoints = append(EndPoints, CurrentEndPointt)
-						if activationFlag == true {
-							fmt.Println(" ( " + fmt.Sprint(EPCount) + " ) - " + jsurl + " :: (endpoint) " + CurrentEndPointt)
-						} else {
-							fmt.Println(" ( " + fmt.Sprint(EPCount) + " ) " + " ::  " + CurrentEndPointt)
-						}
-						_, err = fmt.Fprintln(myOutPut, " ( "+fmt.Sprint(EPCount)+" ) - "+jsurl+" :: (endpoint) "+CurrentEndPointt)
-						if err != nil {
-							panic(err)
-						}
-					}
-				}
+		patterns = append(patterns, pattern)
+	}
+	if err := scanner.Err(); err != nil {
+		return nil, err
+	}
+	return patterns, nil
+}
+
+// applyRegexes applies a list of regexes to the content and returns all matches.
+func applyRegexes(content []byte, regexes []*regexp.Regexp) [][]string {
+	var allMatches [][]string
+	for _, regex := range regexes {
+		matches := regex.FindAllString(string(content), -1)
+		allMatches = append(allMatches, matches)
+	}
+	return allMatches
+}
+
+func isValidMatch(match string) bool {
+    unwantedStrings := []string{"\"/$\"", "\"/*\"", "\"?\"", "\"/\"", "\"//\"", "`/`", "==="}
+    for _, u := range unwantedStrings {
+        if match == u || strings.Contains(match, "===") {
+            return false
+        }
+    }
+    
+    return !strings.ContainsAny(match, ":;{},()|[]!<>^*+ ")
+}
+
+func appendTextToFile(filename, content string) error {
+	file, err := os.OpenFile(filename, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	if err != nil {
+		return fmt.Errorf("error opening file: %w", err)
+	}
+	defer file.Close()
+
+	if _, err := file.WriteString(content + "\n"); err != nil {
+		return fmt.Errorf("error writing to file: %w", err)
+	}
+
+	return nil
+}
+
+func Extract(url, outputFile string, isSilent bool) {
+	content, valid := getFileContent(url)
+	if !valid {
+		fmt.Println("[ ! ] urlFile is not valid or accessible : " + url)
+		return
+	}
+
+	regexes, err := readRegexPatterns("regex.tmp")
+	if err != nil {
+		fmt.Println("[ ! ] Failed to read regex patterns : ", err)
+		return
+	}
+
+	matches := applyRegexes(content, regexes)
+	seen := make(map[string]bool)
+	for _, matchSet := range matches {
+		for _, match := range matchSet {
+			if isValidMatch(match) && !seen[match] {
+				if isSilent == false { fmt.Printf("[ %v ] %v : %v\n", numericExtedEPs, url, match) }
+				if outputFile != "" { appendTextToFile(outputFile, url + " : " + match) } // Saving into the output file
+				seen[match] = true
+				numericExtedEPs++
 			}
-			// #########################################################################
-			// Method 2 : Grep using regex all the X Values in text for example, this.fetch(this.url("X")
-			pattern := regexp.MustCompile(`this\.fetch\(this\.url\("([^"]+)"\)`)
-			matches := pattern.FindAllStringSubmatch(response, -1)
-			if matches != nil {
-				for _, match := range matches {
-					if IsValid(match[1]) == false {
-					} else {
-						if IsinArray(match[1], EndPoints) == true {
-						} else {
-							EPCount += 1
-							EndPoints = append(EndPoints, match[1])
-							if activationFlag == true {
-								fmt.Println(" ( " + fmt.Sprint(EPCount) + " ) - " + jsurl + " ::  " + match[1])
-							} else {
-								fmt.Println(" ( " + fmt.Sprint(EPCount) + " ) " + " ::  " + match[1])
-							}
-							_, err = fmt.Fprintln(myOutPut, " ( "+fmt.Sprint(EPCount)+" ) - "+jsurl+" ::  "+match[1])
-							if err != nil {
-								panic(err)
-							}
-						}
-					}
-				}
-			}
-			// #########################################################################
-		} else {
-			fmt.Println("[ - ] Bad JS File Detected")
 		}
 	}
+
 }
 
 func main() {
-	// Define three flags
-	single_url := flag.String("u", "", "single URL to grep endpoints from")
-	urls_list := flag.String("l", "", "this list would have more thana .js file URL to grep the endpoints from")
-	output := flag.String("o", "js_endpoints.txt", "output file")
-	activationFlag := flag.Bool("p", false, "public mode for showing the URLs of each endpoints & Showing the function (endpoints/fetch)")
+	flagJsFile := flag.String("l", "", ".txt File containing JavaScript file URLs")
+	flagSingleJsFile := flag.String("u", "", "Signle JavaScript File Direct URL")
+	flagOutputFile := flag.String("o", "", "Output To Save Endpoints")
+	flagSilent := flag.Bool("s", false, "Silence Bitch")
 	flag.Parse()
 
-	// Check if the results file is already available or not, If not =>> Create it
-	_, err := os.Stat("js_endpoints.txt")
-	if os.IsNotExist(err) {
-		file, createErr := os.Create("js_endpoints.txt")
-		if createErr != nil {
-			fmt.Println("Error creating file:", createErr)
+	if *flagJsFile == "" && *flagSingleJsFile == "" || *flagJsFile != "" && *flagSingleJsFile != "" {
+		fmt.Println("Please use one of -u for single js file url or -l for .txt file contains js files urls.")
+		return
+	}
+	
+	startTime := time.Now() // time measuring start var
+
+	if *flagJsFile != "" {
+		jsfile, err := os.Open(*flagJsFile)
+		if err != nil {
 			return
 		}
-		defer file.Close()
-	}
+		defer jsfile.Close()
 
-	// Counter Variable
-	EPCount = 0
-
-	// Printing the logo function
-	logo()
-
-	// This part belongs to the old version before adding the flags of single_url use which is "-u"
-	// And the list-URLs which is "-l"
-	//arg := os.Args[1]
-	//myFile, err := os.Open(arg)
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
-	//myScanner := bufio.NewScanner(myFile)
-
-	// Validating with the flags
-	if *single_url != "" && *urls_list != "" || *single_url == "" && *urls_list == "" {
-		panic("Please use single_url mode or URLs_list mode instead, You cannot use multiple or don't use one at least")
-	}
-
-	if *single_url != "" {
-		gimmejslink(*single_url, *output, *activationFlag)
-	} else if *urls_list != "" {
-		arg := *urls_list
-		myFile, err := os.Open(arg)
-		if err != nil {
-			panic(err)
+		scanner := bufio.NewScanner(jsfile)
+		for scanner.Scan() {
+			go Extract(scanner.Text(), *flagOutputFile, *flagSilent)
 		}
-		myScanner := bufio.NewScanner(myFile)
-		for myScanner.Scan() {
-			go gimmejslink(myScanner.Text(), *output, *activationFlag)
-			time.Sleep(100 * time.Millisecond)
+		if err := scanner.Err(); err != nil {
+			return
 		}
-		time.Sleep(5 * time.Second)
+	}
+	if *flagSingleJsFile != ""{
+		Extract(*flagSingleJsFile, *flagOutputFile, *flagSilent)
 	}
 
+	time.Sleep(7 * time.Second)
+	elapsedTime := time.Since(startTime) - (7 * time.Second)
+	fmt.Printf("Process took %d ms\n", elapsedTime.Milliseconds())
 }
-
-// Last Updates:
-// # #############
-// removing duplicates => 1.0.3
-
-// add this.fetch(this.url("X") => 1.0.4
-// short the urls filtering functionality => 1.0.4
-
-// flag for single url -u or urls list -l => 1.0.5
-// flag for public the urls -p => 1.0.5
-// flag for output -o => 1.0.5
-
-// Working on:
-// burp extension => 1.0.6
