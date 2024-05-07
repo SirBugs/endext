@@ -18,6 +18,15 @@ or download from https://go.dev/dl/
 
 Notice that you have to download the `regex.tmp` file and put into it your custom regex depending on the JS File you facing!
 
+# Default Regex Patterns:
+```
+"\?(.*?)"
+"\/(.*?)"
+'\/(.*?)'
+`\/(.*?)`
+this\.fetch\(this\.url\("([^"]+)"\)
+```
+
 # Usage:
 ```
 ▶ go run main.go -l js_files_urls.txt
