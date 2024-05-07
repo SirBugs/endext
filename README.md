@@ -15,6 +15,7 @@ Just need to install go, run:
 ```
 
 or download from https://go.dev/dl/
+
 Notice that you have to download the `regex.tmp` file and put into it your custom regex depending on the JS File you facing!
 
 # Usage:
