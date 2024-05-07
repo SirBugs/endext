@@ -20,52 +20,72 @@ or download from https://go.dev/dl/
 ```
 ▶ go run main.go -l js_files_urls.txt
 
-
-                  ______          ________     __ 	
-                 / ____/___  ____/ / ____/  __/ /_	
-                / __/ / __ \/ __  / __/ | |/_/ __/	
-               / /___/ / / / /_/ / /____>  </ /_  	
-              /_____/_/ /_/\__,_/_____/_/|_|\__/  	
-
-            ( * ) EndpointsExtractor Tool By @SirBugs .go Version
-            ( * ) For Extracting all possilbe endpoints from Js files 
-            ( * ) Version: 1.0.5 (Updated 3.Vrs on 7/7/2023)
-            ( * ) Contact: Twitter@SirBagoza, GitHub@SirBugs, Medium@bag0zathev2
-            ( * ) Command: go run main.go -l jsurls.txt
-
-            ( ! ) You can use only -u for single URL or -l for .JS file URLs, Not both
-            ( ! ) This tool has been received the last 3 updates at once
-
- ( 1 ) - https://example.com/_home/chunks/preload-helper-xxxxxxxx.js :: (endpoint) _app/
- ( 2 ) - https://example.com/_home/chunks/organization-xxxxxxxx.js :: (endpoint) endpoints/dashboard-metadata/bulk
- ( 3 ) - https://example.com/_home/chunks/organization-xxxxxxxx.js :: (endpoint) endpoints/applications
- ( 4 ) - https://example.com/_home/chunks/organization-xxxxxxxx.js :: (endpoint) endpoints/accounts
- ( 5 ) - https://example.com/_home/chunks/organization-xxxxxxxx.js :: (endpoint) sign-in
- ( 6 ) - https://example.com/_home/chunks/organization-xxxxxxxx.js :: (endpoint) endpoints/sign-out
- ( 7 ) - https://example.com/_home/chunks/organization-xxxxxxxx.js :: (endpoint) endpoints/organization/details
- ( 8 ) - https://example.com/_home/chunks/organization-xxxxxxxx.js :: (endpoint) endpoints/organization/update
- ( 9 ) - https://example.com/_home/chunks/organization-xxxxxxxx.js :: (endpoint) endpoints/organization/subscribe
- ( 10 ) - https://example.com/_home/chunks/esr-apps-xxxxxxxx.js :: (endpoint) endpoints/express-security-review/application
- ( 11 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) applications
- ( 12 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) applications/new
- ( 13 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) settings
- ( 14 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) integrations
- ( 15 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) grants
- ( 16 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) applications/
- ( 17 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) accounts
- ( 18 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) webhooks
- ( 19 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) quickstart-guides
- ( 20 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) connectivity-api-offering
- ( 21 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) plans
- ( 22 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) users
- ( 23 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) billing
- ( 24 ) - https://example.com/_home/pages/__layout.svelte-xxxxxxxx.js :: (endpoint) experiments/
-
+[ 0 ] https://dashboard.target.com/assets/index-8d4703d5.js : "?o.credentials="
+[ 1 ] https://dashboard.target.com/assets/index-8d4703d5.js : "?id="
+[ 2 ] https://dashboard.target.com/assets/index-8d4703d5.js : "?ddforward="
+[ 3 ] https://dashboard.target.com/assets/index-8d4703d5.js : "?i="
+[ 4 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/api/v2/"
+[ 5 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/target-0b66e97b.png"
+[ 6 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/welcome-f0600742.png"
+[ 7 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/welcome@2x-c3e5437e.png"
+[ 8 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/screenshot-063bd7f1.png"
+[ 9 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/screenshot@2x-0c6069f9.png"
+[ 10 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/ACHAuthorizationTemplate-b7991176.pdf"
+[ 11 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/CommercialDepositAccountAgreement_March2023-34034815.pdf"
+[ 12 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/target-Prohibited-Categories-7a050116.pdf"
+[ 13 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/csv-a3fb6a60.svg"
+[ 14 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/gif-2e1908c8.svg"
+[ 15 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/html-2dcba250.svg"
+[ 16 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/jpeg-2ad1d5df.svg"
+[ 17 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/jpg-4e59c322.svg"
+[ 18 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/json-3f816b3b.svg"
+[ 19 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/pdf-e4bef26d.svg"
+[ 20 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/png-478fed1d.svg"
+[ 21 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/tiff-c76a207d.svg"
+[ 22 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/txt-803993e5.svg"
+[ 23 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/unknown-6debfec0.svg"
+[ 24 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/zip-e303efb1.svg"
+[ 25 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/assets/pattern-5243e697.svg"
+[ 26 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/app"
+[ 27 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/dashboard/api-keys"
+[ 28 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/bank-accounts"
+[ 29 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/counterparties"
+[ 30 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/entities/person"
+[ 31 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/entities/business"
+[ 32 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/entities"
+[ 33 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/events"
+[ 34 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/events/webhook"
+[ 35 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/dashboard/invites"
+[ 36 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/dashboard/invites/resend_email"
+[ 37 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/plaid/auth/oauth2/temp-code"
+[ 38 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/simulate/receive-ach-credit"
+[ 39 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/simulate/receive-ach-debit"
+[ 40 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/simulate/transfers/ach/settle"
+[ 41 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/simulate/receive-wire"
+[ 42 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/simulate/receive-international-wire"
+[ 43 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/simulate/transfers/wire/settle"
+[ 44 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/transfers/ach"
+[ 45 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/transfers/ach/stop-payments"
+[ 46 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/transfers/ach/returns"
+[ 47 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/transfers/book"
+[ 48 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/transfers/checks/issue"
+[ 49 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/transfers"
+[ 50 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/transfers/wire"
+[ 51 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/dashboard/dashboard-users"
+[ 52 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/dashboard/password_reset_request"
+[ 53 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/dashboard/login"
+[ 54 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/dashboard/dashboard-users/settings"
+[ 55 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/dashboard/mfa/verify"
+[ 56 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/dashboard/logout"
+[ 57 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/dashboard/self"
+[ 58 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/dashboard/dashboard-users/password"
+[ 59 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/dashboard/mfa/setup"
+[ 60 ] https://dashboard.target.com/assets/index-8d4703d5.js : "/dashboard/mfa/resend"
 ```
 
 # One Line Command:
 ```
-▶ echo 'target.com' | waybackurls | tee waybackresults.txt; cat waybackresults.txt | grep "\.js" > js_files.txt; go run main.go -l js_files.txt
+▶ echo 'target.com' | waybackurls | grep "\.js" > js_files.txt; go run main.go -l js_files.txt
 ```
 
 // You can use Gau, HaKrawler, Katana, etc...
@@ -73,12 +93,12 @@ or download from https://go.dev/dl/
 # Options:
 ```
   -l string
-    	this list would have more thana .js file URL to grep the endpoints from
+    	.txt File containing JavaScript file URLs
   -o string
-    	output file (default "js_endpoints.txt")
-  -p	public mode for showing the URLs of each endpoints & Showing the function (endpoints/fetch)
+    	Output To Save Endpoints
+  -s	Silence Bitch
   -u string
-    	single URL to grep endpoints from
+    	Signle JavaScript File Direct URL
 ```
 
 # Updates:
@@ -86,10 +106,11 @@ or download from https://go.dev/dl/
 - (1.0.3) :: removing duplicates
 - (1.0.4) :: RegexGrep with this.fetch(this.url("X") && short the urls filtering functionality
 - (1.0.5) :: flag for single url -u or urls list -l && flag for public the urls -p && flag for output -o
+- (1.0.6) :: revampig the whole structure, adding silence flag and making it faster
 
 
 # Credits:
 
-This tool was written in Golang 1.19.4, Made with all love in Egypt! <3
+This tool was written in Golang, With all love in Egypt! <3
 
 Twitter@SirBagoza , Github@SirBugs
