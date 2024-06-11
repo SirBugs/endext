@@ -83,7 +83,7 @@ func isValidMatch(match string) bool {
         }
     }
     
-    return !strings.ContainsAny(match, ":;{},()|[]!<>^*+ ")
+    return !strings.ContainsAny(match, ":;,()|[]!<>^*+ ")
 }
 
 func appendTextToFile(filename, content string) error {
