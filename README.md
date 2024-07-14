@@ -113,12 +113,12 @@ this\.fetch\(this\.url\("([^"]+)"\)
 ```
 
 # Updates:
-- (1.0.2) :: Published 
-- (1.0.3) :: removing duplicates
-- (1.0.4) :: RegexGrep with this.fetch(this.url("X") && short the urls filtering functionality
-- (1.0.5) :: flag for single url -u or urls list -l && flag for public the urls -p && flag for output -o
-- (1.0.6) :: revampig the whole structure, adding silence flag and making it faster
-
+- (0.0.2) :: Published 
+- (0.0.3) :: removing duplicates
+- (0.0.4) :: RegexGrep with this.fetch(this.url("X") && short the urls filtering functionality
+- (0.0.5) :: flag for single url -u or urls list -l && flag for public the urls -p && flag for output -o
+- (0.0.6) :: revampig the whole structure, adding silence flag and making it faster
+- (0.0.7) :: fixing error of `regex.tmp file not found` by constanting the file path
 
 # Credits:
 
