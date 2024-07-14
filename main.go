@@ -107,7 +107,7 @@ func Extract(url, outputFile string, isSilent bool) {
 		return
 	}
 
-	regexes, err := readRegexPatterns("regex.tmp")
+	regexes, err := readRegexPatterns("./regex.tmp")
 	if err != nil {
 		fmt.Println("[ ! ] Failed to read regex patterns : ", err)
 		return
